@@ -13,7 +13,7 @@ from scipy import ndimage as ndi
 from skimage.color import label2rgb
 
 #Data1 = io.imread('coatingshape/x1_side_mid.tif', plugin='tifffile')
-Data1 = io.imread('coatingshape/wrongcoating3.tif', as_gray=True)
+Data1 = io.imread('coatingshape/x0.5 S33.tif', as_gray=True)
 
 # Data1 = Data1[200:350, :]
 

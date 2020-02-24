@@ -20,8 +20,8 @@ from skimage.morphology import reconstruction
 
 import matplotlib
 #Data1 = io.imread('coatingshape/x1_side_mid.tif', plugin='tifffile')
-Data1 = io.imread('coatingshape/2.tif', as_gray=True)
-Data2 = io.imread('coatingshape/2.tif', as_gray=True)
+Data1 = io.imread('coatingshape/Control0.5_S33.tif', as_gray=True)
+Data2 = io.imread('coatingshape/Control0.5_S33.tif', as_gray=True)
 #Data1[Data1<120] = 255
 # Data1 = Data1[200:350, :]
 Data3 = gaussian_filter(Data2, 1.5, order=0)
@@ -31,14 +31,14 @@ Data3 = gaussian_filter(Data2, 1.5, order=0)
 #binary = Data1 > thresh
 
 edges1 = roberts(Data2)
-edges2 = sobel(Data1)
+edges2 = sobel(Data2)
 edges3 = feature.canny(Data2, sigma=1.5)
 #fill_edges = ndi.binary_fill_holes(edges2)
 
 
 markers = np.zeros_like(Data2)
 
-markers[Data2 < 77] = 1
+markers[Data2 < 170] = 1
 markers[Data2 > 190] = 2
 
 
@@ -55,25 +55,25 @@ image_label_overlay = label2rgb(labeled_coins, image=Data1)
 
 fig, axes = plt.subplots(1, 2, figsize=(8, 3), sharey=True)
 axes[0].imshow(Data2, cmap=plt.cm.gray, interpolation='nearest')
-axes[0].contour(segmentation, [0.5], linewidths=2, colors='y')
-axes[1].imshow(image_label_overlay, interpolation='nearest')
+#axes[0].contour(segmentation, [0.5], linewidths=2, colors='y')
+axes[1].imshow(edges2, cmap=plt.cm.gray)
 
 #hyst = filters.apply_hysteresis_threshold(edges2, low, high)
-a1= np.array(labeled_coins)
-print(np.count_nonzero(a1 == 1))
-print(np.count_nonzero(a1 == 2))
-print(np.count_nonzero(a1 == 3))
-print(np.count_nonzero(a1 == 4))
-print(np.count_nonzero(a1 == 5))
-print(np.count_nonzero(a1 == 6))
+#a1= np.array(labeled_coins)
+#print(np.count_nonzero(a1 == 1))
+#print(np.count_nonzero(a1 == 2))
+#print(np.count_nonzero(a1 == 3))
+#print(np.count_nonzero(a1 == 4))
+#print(np.count_nonzero(a1 == 5))
+#print(np.count_nonzero(a1 == 6))
 
-fig, (ax1, ax2, ax3) = plt.subplots(nrows=1, ncols=3, sharex=True, sharey=True)
-ax1.imshow(Data2, cmap=plt.cm.gray, interpolation='nearest')
-ax1.axis('off')
-ax2.imshow(markers, vmin=Data3.min(), vmax=Data3.max(), cmap=plt.cm.gray)
-ax2.axis('off')
-ax3.imshow(segmentation, cmap=plt.cm.gray)
-ax3.axis('off')
+#fig, (ax1, ax2, ax3) = plt.subplots(nrows=1, ncols=3, sharex=True, sharey=True)
+#ax1.imshow(Data2, cmap=plt.cm.gray, interpolation='nearest')
+#ax1.axis('off')
+#ax2.imshow(markers, vmin=Data3.min(), vmax=Data3.max(), cmap=plt.cm.gray)
+#ax2.axis('off')
+#ax3.imshow(segmentation, cmap=plt.cm.gray)
+#ax3.axis('off')
 
 plt.show()
 

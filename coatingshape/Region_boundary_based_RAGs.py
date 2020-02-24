@@ -25,8 +25,8 @@ from skimage import segmentation, color
 
 import matplotlib
 #Data1 = io.imread('coatingshape/x1_side_mid.tif', plugin='tifffile')
-Data1 = io.imread('coatingshape/1.tif', as_gray=True)
-Data2 = io.imread('coatingshape/1.tif', as_gray=True)
+Data1 = io.imread('coatingshape/x1.0 S26.tif', as_gray=True)
+Data2 = io.imread('coatingshape/x1.0 S26.tif', as_gray=True)
 #Data1[Data1<120] = 255
 # Data1 = Data1[200:350, :]
 image = img_as_float(Data2)
