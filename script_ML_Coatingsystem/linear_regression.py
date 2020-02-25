@@ -14,22 +14,32 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error
+from skimage.exposure import match_histograms
 
+Data1 = io.imread('coating_linear/1.jpg')
+reference = Data1
 
-image_path = "D:/DEV/Python/Practiceforeverything/QuadMedicine/coating_linear"
+image_path = "C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/coating_linear"
 file_spec = '*.jpg'
 load_pattern = os.path.join(image_path, file_spec)
 
 image_collection = io.imread_collection(load_pattern)
 
+image_collection1 = []
+
+for a in range(253):
+      
+      image_collection1.append(match_histograms(image_collection[a], reference, multichannel=True)) 
+      
+
 data = []
 
 for a in range(253):
-    crop_image = image_collection[a][210:519, 371:940]
+    crop_image = image_collection1[a][210:519, 371:940]
     converted_data = np.array(crop_image).reshape(-1)
     data.append(converted_data)
 
-fname = 'D:/DEV/Python/Practiceforeverything/QuadMedicine/data_coating.xlsx'
+fname = 'C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/script_ML_Coatingsystem/data_coating.xlsx'
 
 data_y = pd.read_excel(fname, header=None)
 
