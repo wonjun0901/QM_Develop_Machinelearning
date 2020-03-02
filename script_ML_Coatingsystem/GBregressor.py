@@ -57,18 +57,21 @@ y_data = y.values
 X_train, X_test, y_train, y_test = \
     train_test_split(X_data, y_data, random_state=0)
 
-linear_model = LinearRegression().fit(X_train, y_train)
+GradientBoost_model = GradientBoostingRegressor(n_estimators=15000,
+                                                subsample=0.3,
+                                                max_features=0.05,
+                                                max_depth=3,
+                                                random_state=0)
 
-print('Linear Regression train - score : ',
-      linear_model.score(X_train, y_train))
-print('Linear Regression test - score : ',
-      linear_model.score(X_test, y_test))
+GradientBoost_model.fit(X_train, y_train)
 
-predicted = linear_model.predict(X_train)
-predicted_test = linear_model.predict(X_test)
+print('RandomForest regressor train score : ',
+      GradientBoost_model.score(X_train, y_train))
+print('RandomForest regressor test score : ',
+      GradientBoost_model.score(X_test, y_test))
 
-#print('(R2) train : ', r2_score(y_train, predicted))
-#print('(R2) test : ', r2_score(y_test, predicted_test))
+predicted = GradientBoost_model.predict(X_train)
+predicted_test = GradientBoost_model.predict(X_test)
 
 print('(MAE) - train : ',
       mean_absolute_error(y_train, predicted))
@@ -82,11 +85,10 @@ print('(MSE) - train : ',
 print('(MSE) - test : ',
       mean_squared_error(y_test, predicted_test))
 
-
 base_dir = "D:/DEV/Python/QM_Develop_Machinelearning/script_ML_Coatingsystem"
-file_nm = "result.xlsx"
+file_nm = "resultnew.xlsx"
 xlxs_dir = os.path.join(base_dir, file_nm)
 
 df = pd.DataFrame({'real value': y_test, 'predicted value': predicted_test})
-df.to_excel(xlsx_dir, sheet_name='Sheet1', na_rep='NaN', float_format='%.2f', header=True, index=True,
+df.to_excel(xlxs_dir, sheet_name='Sheet1', na_rep='NaN', float_format='%.2f', header=True, index=True,
             index_label="id", startrow=1, startcol=1, freeze_panes=(2, 0))

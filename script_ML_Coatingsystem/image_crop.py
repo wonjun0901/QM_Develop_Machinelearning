@@ -16,12 +16,12 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 
-image_path = "D:/DEV/Python/Practiceforeverything/QuadMedicine/coating_linear"
+image_path = "D:/DEV/Python/QM_Develop_Machinelearning/script_ML_Coatingsystem/coating_ML"
 file_spec = '*.jpg'
 load_pattern = os.path.join(image_path, file_spec)
 
 image_collection = io.imread_collection(load_pattern)
 
 
-plt.imshow(image_collection[0][210:519, 371:940])
+plt.imshow(image_collection[0][391:638, 310:670])
 plt.show()
