@@ -15,6 +15,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from skimage.exposure import match_histograms
+from sklearn.neural_network import MLPRegressor
 
 Data1 = io.imread(
     'C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/script_ML_Coatingsystem/coating_ML/232.jpg')
@@ -51,21 +52,22 @@ data = np.array(data)
 X = pd.DataFrame(data)
 y = pd.Series(y)
 
+X_data = X.values
 X_data = X.values/255.
 y_data = y.values
 
 X_train, X_test, y_train, y_test = \
     train_test_split(X_data, y_data, random_state=0)
 
-linear_model = LinearRegression().fit(X_train, y_train)
+Mlp = MLPRegressor(hidden_layer_sizes=(1024,512,256,128), tol=1e-5, max_iter=50000, random_state=0).fit(X_train, y_train)
 
-print('Linear Regression train - score : ',
-      linear_model.score(X_train, y_train))
-print('Linear Regression test - score : ',
-      linear_model.score(X_test, y_test))
+print('MLP train - score : ',
+      Mlp.score(X_train, y_train))
+print('MLP test - score : ',
+      Mlp.score(X_test, y_test))
 
-predicted = linear_model.predict(X_train)
-predicted_test = linear_model.predict(X_test)
+predicted = Mlp.predict(X_train)
+predicted_test = Mlp.predict(X_test)
 
 #print('(R2) train : ', r2_score(y_train, predicted))
 #print('(R2) test : ', r2_score(y_test, predicted_test))
@@ -83,30 +85,10 @@ print('(MSE) - test : ',
       mean_squared_error(y_test, predicted_test))
 
 base_dir = "C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/script_ML_Coatingsystem"
-file_nm = "result.xlsx"
+file_nm = "result2.xlsx"
 xlxs_dir = os.path.join(base_dir, file_nm)
 
 df = pd.DataFrame({'real value':y_test, 'predicted value':predicted_test})
-df.to_excel(xlxs_dir, # directory and file name to write
-
-            sheet_name = 'Sheet1', 
-
-            na_rep = 'NaN', 
-
-            float_format = "%.2f", 
-
-            header = True, 
-
-            index = True, 
-
-            index_label = "id", 
-
-            startrow = 1, 
-
-            startcol = 1, 
-
-            #engine = 'xlsxwriter', 
-
-            freeze_panes = (2, 0)
-
-            ) 
+df.to_excel(xlxs_dir, sheet_name = 'Sheet1', na_rep = 'NaN', float_format = "%.2f", 
+            header = True, index = True, index_label = "id", 
+            startrow = 1, startcol = 1, freeze_panes = (2, 0)) 

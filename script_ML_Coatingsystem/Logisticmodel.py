@@ -5,11 +5,8 @@ import pandas as pd
 from skimage import data, io, filters
 from skimage.color import rgba2rgb, rgb2gray
 import scipy.io
-from sklearn.svm import SVC, LinearSVC
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import KFold
 from sklearn.linear_model import LogisticRegression
