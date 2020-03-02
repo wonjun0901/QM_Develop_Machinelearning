@@ -16,10 +16,11 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from skimage.exposure import match_histograms
 
-Data1 = io.imread('coating_linear/1.jpg')
+Data1 = io.imread(
+    'D:/DEV/Python/QM_Develop_Machinelearning/script_ML_Coatingsystem/coating_ML/232.jpg')
 reference = Data1
 
-image_path = "C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/coating_linear"
+image_path = "D:/DEV/Python/QM_Develop_Machinelearning/script_ML_Coatingsystem/coating_ML"
 file_spec = '*.jpg'
 load_pattern = os.path.join(image_path, file_spec)
 
@@ -27,19 +28,20 @@ image_collection = io.imread_collection(load_pattern)
 
 image_collection1 = []
 
-for a in range(253):
-      
-      image_collection1.append(match_histograms(image_collection[a], reference, multichannel=True)) 
-      
+for a in range(316):
+
+    image_collection1.append(match_histograms(
+        image_collection[a], reference, multichannel=True))
+
 
 data = []
 
-for a in range(253):
-    crop_image = image_collection1[a][210:519, 371:940]
+for a in range(316):
+    crop_image = image_collection1[a][391:638, 310:670]
     converted_data = np.array(crop_image).reshape(-1)
     data.append(converted_data)
 
-fname = 'C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/script_ML_Coatingsystem/data_coating.xlsx'
+fname = 'D:/DEV/Python/QM_Develop_Machinelearning/script_ML_Coatingsystem/200228_coatingdata.xlsx'
 
 data_y = pd.read_excel(fname, header=None)
 
@@ -57,16 +59,16 @@ X_train, X_test, y_train, y_test = \
 
 linear_model = LinearRegression().fit(X_train, y_train)
 
-print('Gradient boost regressor score : ',
+print('Linear Regression train - score : ',
       linear_model.score(X_train, y_train))
-print('Gradient boost regressor test score : ',
+print('Linear Regression test - score : ',
       linear_model.score(X_test, y_test))
 
 predicted = linear_model.predict(X_train)
 predicted_test = linear_model.predict(X_test)
 
-print('(R2) train : ', r2_score(y_train, predicted))
-print('(R2) test : ', r2_score(y_test, predicted_test))
+#print('(R2) train : ', r2_score(y_train, predicted))
+#print('(R2) test : ', r2_score(y_test, predicted_test))
 
 print('(MAE) - train : ',
       mean_absolute_error(y_train, predicted))

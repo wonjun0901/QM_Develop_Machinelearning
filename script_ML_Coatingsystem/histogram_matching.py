@@ -1,16 +1,14 @@
 import matplotlib.pyplot as plt
 
-from skimage import io, filters
-from skimage import exposure
+from skimage import io, filters, exposure
 from skimage.exposure import match_histograms
 
+# Histogram matching manipulates the pixels of an input image so that its histogram matches the histogram of the reference image.
+# If the images have multiple channels, the matching is done independently for each channel,
+# as long as the number of channels is equal in the input image and the reference.
 
-## Histogram matching manipulates the pixels of an input image so that its histogram matches the histogram of the reference image. 
-## If the images have multiple channels, the matching is done independently for each channel, 
-## as long as the number of channels is equal in the input image and the reference.
-
-## Histogram matching can be used as a lightweight normalisation for image processing, such as feature matching, 
-## especially in circumstances where the images have been taken from different sources or in different conditions (i.e. lighting).
+# Histogram matching can be used as a lightweight normalisation for image processing, such as feature matching,
+# especially in circumstances where the images have been taken from different sources or in different conditions (i.e. lighting).
 
 
 Data1 = io.imread('coating_linear/1.jpg')
