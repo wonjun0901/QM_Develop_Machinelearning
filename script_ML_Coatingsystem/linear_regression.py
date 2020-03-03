@@ -36,7 +36,7 @@ for a in range(316):
 
 data = []
 
-for a in range(316):
+for a in range(77, 316, 1):
     crop_image = image_collection1[a][391:638, 310:670]
     converted_data = np.array(crop_image).reshape(-1)
     data.append(converted_data)
@@ -45,7 +45,7 @@ fname = 'C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/script_ML_Co
 
 data_y = pd.read_excel(fname, header=None)
 
-y = data_y[0]
+y = data_y[0][77:]
 data = np.array(data)
 
 X = pd.DataFrame(data)
@@ -88,25 +88,6 @@ xlxs_dir = os.path.join(base_dir, file_nm)
 
 df = pd.DataFrame({'real value':y_test, 'predicted value':predicted_test})
 df.to_excel(xlxs_dir, # directory and file name to write
-
-            sheet_name = 'Sheet1', 
-
-            na_rep = 'NaN', 
-
-            float_format = "%.2f", 
-
-            header = True, 
-
-            index = True, 
-
-            index_label = "id", 
-
-            startrow = 1, 
-
-            startcol = 1, 
-
-            #engine = 'xlsxwriter', 
-
-            freeze_panes = (2, 0)
-
-            ) 
+            sheet_name = 'Sheet1', na_rep = 'NaN', float_format = "%.2f", 
+            header = True, index = True, index_label = "id", 
+            startrow = 1, startcol = 1, freeze_panes = (2, 0)) 
