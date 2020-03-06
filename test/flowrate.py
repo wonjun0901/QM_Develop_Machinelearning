@@ -4,12 +4,12 @@ import os
 import pandas as pd
 
 
-df = pd.read_excel('C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/test/data_flowrate.xlsx', header=0, index=None)
+df = pd.read_excel('C:/Users/wonju/Documents/GitHub/QM_Develop_Machinelearning/test/data_flowrate2.xlsx', header=0, index=None)
 print(df)
 time=df['Time']
 
 flowrate = df['flowrate']
-rolling_mean = flowrate.rolling(window=21).mean()
+rolling_mean = flowrate.rolling(window=20).mean()
 
 #flowrate = flowrate - rolling_mean
 flows = np.array(flowrate)
@@ -21,7 +21,7 @@ plt.plot(time, flowrate)
 plt.plot(time, rolling_mean, c='r')
 plt.xlabel('time(s)')
 plt.ylabel('flowrate(ul/min)')
-plt.xticks(np.arange(550, 650, step=10))
-plt.yticks(np.arange(150, 450, step=50))
+plt.xticks(np.arange(0, 110, step=10))
+plt.yticks(np.arange(0, 151, step=50))
 plt.grid(which='both', color='gray', linestyle='--', linewidth=0.5)
 plt.show()
