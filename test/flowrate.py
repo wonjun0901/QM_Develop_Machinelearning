@@ -5,13 +5,23 @@ import pandas as pd
 
 
 df = pd.read_excel(
-    './test/data_flowrate.xlsx', header=0, index=None)
-print(df)
+    './test/data_flowrate1.xlsx', header=0, index=None)
+#print(df)
+
 time = df['Time']
+flowrate = df['flowrate']
 
-flowrate = df['flowrate']-170
-rolling_mean = flowrate.rolling(window=80, center=True).mean()
+rolling_mean = flowrate.rolling(window=20, center=True).mean()
 
+rolling_mean = pd.DataFrame(rolling_mean)
+#slope = rolling_mean.diff()
+#slope = pd.DataFrame(slope)
+#slope.fillna(value=0)
+#print(slope)
+
+#print(slope.loc[slope['flowrate'] > 10])
+#print(df.loc[df['flowrate'].rolling(window=20, center=True).mean() > 50 ])
+#print(rolling_mean)
 #flowrate = flowrate - rolling_mean
 #flows = np.array(flowrate)
 
@@ -22,7 +32,7 @@ plt.plot(time, flowrate)
 plt.plot(time, rolling_mean, c='r')
 plt.xlabel('time(s)')
 plt.ylabel('flowrate(ul/min)')
-plt.xticks(np.arange(550, 680, step=10))
-plt.yticks(np.arange(-50, 300, step=50))
+plt.xticks(np.arange(0, 131, step=10))
+plt.yticks(np.arange(-50, 201, step=50))
 plt.grid(which='both', color='gray', linestyle='--', linewidth=0.5)
 plt.show()

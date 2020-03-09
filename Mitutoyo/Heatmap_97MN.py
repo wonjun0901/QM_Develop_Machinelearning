@@ -175,7 +175,7 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
 # 한 개만 보고 싶을 때 코드
 
 
-data_Name = "QuadMedicine/Mitutoyo/data/NT7_InjMol_Monument800/20190724_data1.csv"
+data_Name = "./Mitutoyo/높이/200309_200305사출/sample1.csv"
 makingheatmap(data_Name, 720, 820)
 
 

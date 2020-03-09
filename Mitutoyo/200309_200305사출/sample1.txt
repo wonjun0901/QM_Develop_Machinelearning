@@ -1,0 +1,91 @@
+
+            요소          측정값          설계값            오차       상한 공차       하한 공차       통과/실패
+                                                        (TP Dev)        (TP Tol)                                
+면: 니들베이스면(ID:9, 시작 4 점) 
+       평면도 =                                           0.0002                                                
+
+거리: 베이스짧은거리(ID:15) 사이 니들베이스아랫선오른쪽선점(ID:14) 그리고 니들베이스왼쪽선(ID:10)
+           LC =          10.5036                                                                                
+
+거리: 베이스긴거리(ID:16) 사이 니들베이스윗선(ID:13) 그리고 니들베이스아랫선오른쪽선점(ID:14)
+           LC =          12.8939                                                                                
+
+면: 니들서포트면(ID:17, 시작 4 점) 
+       평면도 =                                           0.0007                                                
+
+원: 니들내경(ID:18, 시작 497 점) 
+         직경 =           9.9298                                                                                
+         반경 =           4.9649                                                                                
+
+거리: 거리-5(ID:20) 사이 니들베이스면(ID:9) 그리고 니들서포트면점(ID:19)
+           SC =           0.5051                                                                                
+
+거리: 니들베이스두께(ID:23) 사이 유리면(ID:22) 그리고 니들베이스면점(ID:21)
+           SC =           1.0995                                                                                
+
+거리: pitch_left1_left2(ID:57) 사이 left1_bot8(ID:46) 그리고 gateleft2line_left(ID:36)
+           LC =           0.7953                                                                                
+
+거리: pitch_left2_left3(ID:58) 사이 교점-6(ID:47) 그리고 gateleft3line_left(ID:37)
+           LC =           0.7947                                                                                
+
+거리: pitch_left3_left4(ID:59) 사이 교점-7(ID:48) 그리고 gateleft4line_left(ID:38)
+           LC =           0.7931                                                                                
+
+거리: pitch_left4_left5(ID:60) 사이 교점-8(ID:49) 그리고 gateleft5line_left(ID:39)
+           LC =           0.7965                                                                                
+
+거리: pitch_left5_left6(ID:61) 사이 교점-9(ID:50) 그리고 gateleft6line_left(ID:40)
+           LC =           0.8022                                                                                
+
+거리: pitch_left6_left7(ID:62) 사이 교점-10(ID:51) 그리고 gateleft7line_left(ID:41)
+           LC =           0.7903                                                                                
+
+거리: pitch_left7_left8(ID:63) 사이 교점-11(ID:52) 그리고 gateleft8line_left(ID:42)
+           LC =           0.7948                                                                                
+
+거리: pitch_left8_left9(ID:64) 사이 교점-12(ID:53) 그리고 gateleft9line_left(ID:43)
+           LC =           0.7934                                                                                
+
+거리: pitch_left9_left10(ID:65) 사이 교점-13(ID:54) 그리고 gateleft10line_left(ID:44)
+           LC =           0.7943                                                                                
+
+거리: pitch_left10_left11(ID:66) 사이 교점-14(ID:55) 그리고 gateleft11line_left(ID:45)
+           LC =           0.7922                                                                                
+
+거리: pitch_bot10_bot11(ID:78) 사이 교점-16(ID:67) 그리고 gate10line_bot(ID:25)
+           LC =           0.7941                                                                                
+
+거리: pitch_bot9_bot10(ID:79) 사이 교점-17(ID:68) 그리고 gate9line_bot(ID:26)
+           LC =           0.7964                                                                                
+
+거리: pitch_bot8_bot9(ID:80) 사이 교점-18(ID:69) 그리고 gate8line_bot(ID:27)
+           LC =           0.7949                                                                                
+
+거리: pitch_bot7_bot8(ID:81) 사이 교점-19(ID:70) 그리고 gate7line_bot(ID:28)
+           LC =           0.7953                                                                                
+
+거리: pitch_bot6_bot7(ID:82) 사이 교점-20(ID:71) 그리고 gate6line_bot(ID:29)
+           LC =           0.7945                                                                                
+
+거리: pitch_bot5_bot6(ID:83) 사이 교점-21(ID:72) 그리고 gate5line_bot(ID:30)
+           LC =           0.7968                                                                                
+
+거리: pitch_bot4_bot5(ID:84) 사이 교점-22(ID:73) 그리고 gate4line_bot(ID:31)
+           LC =           0.7943                                                                                
+
+거리: pitch_bot3_bot4(ID:85) 사이 교점-23(ID:74) 그리고 gate3line_bot(ID:32)
+           LC =           0.7956                                                                                
+
+거리: pitch_bot2_bot3(ID:86) 사이 교점-24(ID:75) 그리고 gate2line_bot(ID:33)
+           LC =           0.7941                                                                                
+
+거리: pitch_bot1_bot2(ID:87) 사이 교점-25(ID:76) 그리고 gate1line_bot(ID:34)
+           LC =           0.7939                                                                                
+
+거리: pitch_bot1_bot11(ID:88) 사이 gate1line_bot(ID:34) 그리고 교점-16(ID:67)
+           LC =           7.9498                                                                                
+
+거리: pitch_left1_left11(ID:89) 사이 gateleft1line_left(ID:35) 그리고 교점-15(ID:56)
+           LC =           7.9470                                                                                
+
