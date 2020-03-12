@@ -1,0 +1,6 @@
+FeatureType,FeatureLabel,FeatureID,OutputItem,Actual,Nominal,Deviation,UpperTol,LowerTol,PassFail
+Plane,밀핀,3,Flatness,,,0.0011,,,
+Distance,j1,8,SC,0.0086,,,,,
+Distance,j2,9,SC,0.0189,,,,,
+Distance,거리-3,10,SC,0.0026,,,,,
+Distance,거리-4,11,SC,0.0095,,,,,
