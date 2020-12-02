@@ -2,11 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
+
+
 from scipy import stats
 
-
 data = pd.read_excel('./test/200303_Bradford_ELISA.xlsx',
-                     header=0, index=None, sheet_name='Bradford')
+                     header=0, sheet_name='Bradford')
 
 sample1 = data['H:T=1:20'][0:5]
 print(sample1.mean())
@@ -25,7 +26,7 @@ print(stats.ttest_rel(sample1, sample2))
 print(stats.ttest_rel(sample3, sample4))
 
 data = pd.read_excel('./test/200303_Bradford_ELISA.xlsx',
-                     header=0, index=None, sheet_name='ELISA')
+                     header=0, sheet_name='ELISA')
 
 sample1 = data['H:T=1:20'][0:5]
 print(sample1.mean())
