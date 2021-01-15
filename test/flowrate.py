@@ -5,7 +5,7 @@ import pandas as pd
 
 
 df = pd.read_excel(
-    './test/data_flowrate1.xlsx', header=0, index=None)
+    './test/data_flowrate1.xlsx', header=0)
 # print(df)
 
 time = df['Time']
