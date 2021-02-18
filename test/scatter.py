@@ -7,9 +7,9 @@ from sklearn.preprocessing import PolynomialFeatures
 
 
 
-data = pd.read_excel('./test/IRMN_weight_measurement.xlsx', header=0, sheet_name=0, dtype={'Press Count':np.float64, 'Weight(ug)':np.float64, "Measurement":str})
-data1 = pd.read_excel('./test/IRMN_weight_measurement.xlsx', header=0, sheet_name=1, dtype={'Press Count':np.float64, 'Weight(ug)':np.float64, "Measurement":str})
-data2 = pd.read_excel('./test/IRMN_weight_measurement.xlsx', header=0, sheet_name=2, dtype={'Press Count':np.float64, 'Weight(ug)':np.float64, "Measurement":str})
+#data = pd.read_excel('./test/IRMN_weight_measurement_bycycle.xlsx', header=0, sheet_name=0, dtype={'Press Count':np.float64, 'Weight(ug)':np.float64})
+data = pd.read_excel('./test/IRMN_weight_measurement.xlsx', header=0, sheet_name=0, dtype={'Press Count':np.float64, 'Weight(ug)':np.float64, 'Measurement':str})
+#data2 = pd.read_excel('./test/IRMN_weight_measurement_bycycle.xlsx', header=0, sheet_name=2, dtype={'Press Count':np.float64, 'Weight(ug)':np.float64, "Measurement":str})
 
 
 df = pd.DataFrame(data)
@@ -24,8 +24,9 @@ df = pd.DataFrame(data)
 
 #ax = sns.barplot(data=data, x="Day", y="Weight", ci="sd")
 #ax = plt.subplot()
-ax = sns.catplot(data=data, x="Press Count", y="Weight(ug)", hue="Measurement",kind="point", hue_order=["Theoretical value", "Experimental value"], ci=None, legend_out=False)
-ax = sns.barplot(x="Press Count", y="Weight(ug)", hue="Measurement",data=data, linewidth=2, ci="sd", hue_order=["Theoretical value", "Experimental value"])
+ax = sns.lineplot(x="Press Count", y="Weight(ug)", hue="Measurement",hue_order=["Theoretical value", "Exp1", "Exp2"], data=data,palette="Blues", ci="sd")
+
+ax = sns.catplot(data=data, x="Press Count", y="Weight(ug)", hue="Measurement", hue_order=["Theoretical value", "Exp1", "Exp2"], kind="bar", ci="sd", legend_out=False, palette="Blues" )
 plt.show()
 #sns.regplot(x="Press Count", y="Weight(ug)", data=data1, order=2, n_boot=1000)
 #sns.regplot(x="Press Count", y="Weight(ug)", data=data2, order=2, n_boot=1000)
