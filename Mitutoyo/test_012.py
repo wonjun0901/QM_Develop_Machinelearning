@@ -7,7 +7,7 @@ import pandas as pd
 import os
 # 샘플 여러개를 보고 싶을 때 코드
 
-fname = "QuadMedicine/Mitutoyo/data/NT7_InjMol_Monument800/20190724_data1.csv"
+fname = "./Mitutoyo/data/NT7_InjMol_Monument800/20190724_data1.csv"
 # print(fname[1])
 # print(type(fname[1]))
 data = pd.read_csv(fname, engine='python', index_col=False)

@@ -56,7 +56,7 @@ column_name.append('actual_digital_output_bits')
 
  
 p1_df = df.loc[:, column_name]
-#print(p1_df)
+#print(len(p1_df))
 
 # data processing which actual digital output bit equal to 1
 p2_df = p1_df[df['actual_digital_output_bits']==1]
@@ -86,7 +86,7 @@ p4_df = p3_df[p3_df['timestamp']>0.02]
 
 # data processing
 index_df_4th = df_3rd.index.tolist()
-print(index_df_4th)
+#print(index_df_4th)
 
 
 # 차이가 0.02이상의 부근인 데이터에 대한 인덱스 찾기
@@ -132,7 +132,7 @@ for i in range(0, len(index_df_4th)):
     np.square(np.array(bc[i]['actual_TCP_speed_0']))+np.square(np.array(bc[i]['actual_TCP_speed_2']))
     spd_cord[i] = np.sqrt(spd_cord[i]*1000000)
 
-print(spd_cord)
+#print(spd_cord)
 
 spd_target_cord={}
 
@@ -145,8 +145,39 @@ for i in range(0, len(index_df_4th)):
 
 values12 = list(spd_target_cord.values())
 
+#################################################################
+# 전체 시간에 따른 거리차이 그래프
+
+dis_x_cord1= np.array(df['target_TCP_pose_0']-df['actual_TCP_pose_0'])*1000000
+dis_y_cord1= np.array(df['target_TCP_pose_1']-df['actual_TCP_pose_1'])*1000000
+dis_z_cord1= np.array(df['target_TCP_pose_2']-df['actual_TCP_pose_2'])*1000000
+
+dis_targetbtnreal1 = np.sqrt(np.square(dis_x_cord1)\
+     +np.square(dis_y_cord1)+np.square(dis_z_cord1))
+
+timestamp_signal3 = np.arange(0, float(len(df))/100, 0.01)
+plt.plot(timestamp_signal3, dis_targetbtnreal1)
+#plt.legend()
+plt.show()
+####################################################################
+# 전체 속도에 대한 그래프 그려보장
+
+spd_cord1= np.square(np.array(df['actual_TCP_speed_1']))+ \
+    np.square(np.array(df['actual_TCP_speed_0']))+np.square(np.array(df['actual_TCP_speed_2']))
+spd_cord1 = np.sqrt(spd_cord1*1000000)
 
 
+spd_target_cord1= np.square(np.array(df['target_TCP_speed_1']))+\
+    np.square(np.array(df['target_TCP_speed_0']))+np.square(np.array(df['target_TCP_speed_2']))
+spd_target_cord1 = np.sqrt(spd_target_cord1*1000000)
+
+
+timestamp_signal3 = np.arange(0, float(len(df))/100, 0.01)
+
+plt.plot(timestamp_signal3, spd_target_cord1, label="Target Speed")
+plt.plot(timestamp_signal3, spd_cord1, label="actual Speed")
+plt.legend()
+plt.show()
 #####################################################################
 
 
@@ -198,7 +229,7 @@ plt.legend()
 plt.ylim((0, 70))
 plt.show()
 
-timestamp_signal1 = np.arange(0, 30, 0.1)
+timestamp_signal1 = np.arange(0, 3.0, 0.01)
 for i in range(0, len(index_p4_df)):
 
     plt.plot(timestamp_signal1, values[i],label='Move'+str(i+1))
@@ -209,7 +240,7 @@ plt.show()
 
 ################################################
 
-timestamp_signal2 = np.arange(0, 19.9, 0.1)
+timestamp_signal2 = np.arange(0, 1.99, 0.01)
 
 plt.plot(timestamp_signal2, values12[0], label="Target Speed")
 for i in range(0, len(index_df_4th)):
@@ -233,8 +264,21 @@ plt.show()
 #print(ry1)
 #print(rz1)
 
-######################################################
+#######################################################################
+# 가속도에 대한 부분 
 hue1 = np.diff(values1[0])
 hue1 = pd.Series(hue1)
-plt.plot(timestamp_signal2[:-1],hue1.rolling(window=15, center=True).mean()*10)
+plt.plot(timestamp_signal2[:-1],hue1.rolling(window=15, center=True).mean()*100)
 plt.show()
+
+#######################################################################
+
+########################################################################
+# 이동 거리 부분 
+
+moving_dis_x = np.square(df['actual_TCP_pose_0'][812] - df['actual_TCP_pose_0'][1013])
+moving_dis_y = np.square(df['actual_TCP_pose_1'][812] - df['actual_TCP_pose_1'][1013])
+moving_dis_z = np.square(df['actual_TCP_pose_2'][812] - df['actual_TCP_pose_2'][1013])
+moving_dis = np.sqrt(moving_dis_x + moving_dis_y + moving_dis_z)*1000
+
+print(moving_dis)
