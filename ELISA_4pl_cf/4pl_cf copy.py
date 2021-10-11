@@ -12,7 +12,10 @@ def logistic4(x, A, B, C, D):
     return ((A-D)/(1.0+((x/C)**B))) + D
 
 xdata = df['Conc'][:]
+print(xdata)
 ydata = df['Value'][:]
+print(ydata)
+
 
 popt, pcov = curve_fit(logistic4, xdata, ydata)
 

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import pandas as pd
 
-df = pd.read_excel('./ELISA_4pl_cf/Hb_elisa_test.xlsx', sheet_name=2)
+df = pd.read_excel('./ELISA_4pl_cf/Hb_elisa_test.xlsx', sheet_name=3)
 # print(df)
 
 # define 4pl logistic
@@ -18,18 +18,19 @@ def logistic4(x, A, B, C, D):
 
 ### standard ####
 std_dup = 2
-dil_num = 5
+dil_num = 6
 
 std_xdata = df.iloc[:dil_num, 0:std_dup]
 std_xdata = np.reshape(np.array(std_xdata), -1)
 std_xdata = pd.Series(std_xdata)
+print(std_xdata)
 
 std_ydata = df.iloc[:dil_num, 10:10+std_dup]
 std_ydata = np.reshape(np.array(std_ydata), -1)
 std_ydata = pd.Series(std_ydata)
+print(std_ydata)
 
-popt, pcov = curve_fit(logistic4, std_xdata, std_ydata,
-                       bounds=(0, [10, 10, 50, 3.4]))
+popt, pcov = curve_fit(logistic4, std_xdata, std_ydata,bounds=(0,[0, 500, 500, 500]))
 
 print(popt)
 
